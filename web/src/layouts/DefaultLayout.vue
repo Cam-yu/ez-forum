@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="navbar-inner">
       <router-link to="/" class="brand">
-        <span class="brand-logo">🦊</span>
+        <span class="brand-logo">⚡</span>
         <span class="brand-name">EZ Forum</span>
       </router-link>
 

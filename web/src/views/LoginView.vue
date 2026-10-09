@@ -1,7 +1,7 @@
 <template>
   <div class="auth-page">
     <div class="auth-card">
-      <div class="auth-brand">🦊 EZ Forum</div>
+      <div class="auth-brand">⚡ EZ Forum</div>
       <h2 class="auth-title">欢迎回来</h2>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top" size="large" @keyup.enter="submit">
