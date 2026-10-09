@@ -4,15 +4,9 @@
 
 **基于 Bun + Elysia + Prisma ORM 8 + Vue 3 的全栈论坛系统**
 
-深色 / 浅色双主题 · 发帖审核流 · 两级评论 · 点赞 · 板块 · 管理后台
+`Bun` · `Elysia` · `Prisma ORM 8` · `PostgreSQL 15+` · `Vue 3` · `Element Plus` · `TypeScript`
 
-![Bun](https://img.shields.io/badge/Bun-1.3-f9f1e1?logo=bun&logoColor=black)
-![Elysia](https://img.shields.io/badge/Elysia-latest-c7005d)
-![Prisma](https://img.shields.io/badge/Prisma_ORM-8_RC-2D3748?logo=prisma&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-4169E1?logo=postgresql&logoColor=white)
-![Vue](https://img.shields.io/badge/Vue_3-5.x-4FC08D?logo=vuedotjs&logoColor=white)
-![Element Plus](https://img.shields.io/badge/Element_Plus-2.x-409EFF?logo=element&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+深色 / 浅色双主题 · 发帖审核流 · 两级评论 · 点赞 · 板块 · 管理后台
 
 [功能特性](#-功能特性) · [快速开始](#-快速开始) · [项目结构](#-项目结构) · [API 一览](#-api-一览) · [部署](#-部署)
 
@@ -193,7 +187,4 @@ cd web && bun run build
 ---
 
 <div align="center">
-
-用 ❤️ 和 🦊 构建 · Bun + Elysia + Prisma + Vue
-
 </div>
