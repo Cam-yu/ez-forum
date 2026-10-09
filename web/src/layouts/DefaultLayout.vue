@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <router-link to="/" class="brand">
         <span class="brand-logo">🦊</span>
-        <span class="brand-name">Elysia 论坛</span>
+        <span class="brand-name">FoxDo 论坛</span>
       </router-link>
 
       <nav class="nav-links">
@@ -51,7 +51,7 @@
 
   <router-view />
 
-  <footer class="footer">Elysia Forum · Bun + Elysia + Prisma + Vue3</footer>
+  <footer class="footer">FoxDo · Bun + Elysia + Prisma + Vue3</footer>
 </template>
 
 <script setup lang="ts">

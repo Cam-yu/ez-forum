@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦊 Elysia Forum
+# 🦊 FoxDo
 
 **基于 Bun + Elysia + Prisma ORM 8 + Vue 3 的全栈论坛系统**
 

@@ -49,7 +49,7 @@ const run = async () => {
     const posts = [
         {
             user_id: demo.id,
-            title: "欢迎来到 Elysia 论坛",
+            title: "欢迎来到 FoxDo 论坛",
             context: "这是一个基于 Bun + Elysia + Prisma 8 + Vue 3 的全栈论坛演示项目。\n\n发帖需要管理员审核通过后才会公开展示，欢迎体验注册、发帖、评论、点赞等完整流程。",
             category_id: categoryId("综合讨论"),
             review_status: 'approved' as const
@@ -75,7 +75,7 @@ const run = async () => {
         await db.orm.public.Post.select('id').create({ ...post, is_public: true })
         console.log(`帖子已创建: ${post.title}`)
     }
-    const welcome = await db.orm.public.Post.where({ title: "欢迎来到 Elysia 论坛" }).select('id').first()
+    const welcome = await db.orm.public.Post.where({ title: "欢迎来到 FoxDo 论坛" }).select('id').first()
 
     // 评论
     if (welcome && !(await db.orm.public.Comment.where({ post_id: welcome.id }).select('id').first())) {
