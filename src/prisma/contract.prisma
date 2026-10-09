@@ -1,0 +1,88 @@
+// use prisma-8
+//用户角色：管理员只能在TS脚本中创建（注册接口固定为普通用户）
+enum user_role {
+  @@type("pg/text@1")
+  user = "user"
+  admin = "admin"
+}
+
+//文章审核状态：普通用户发布的文章需管理员审核通过后才公开可见
+enum review_status {
+  @@type("pg/text@1")
+  pending = "pending"
+  approved = "approved"
+  rejected = "rejected"
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  nickname   String
+  username   String    @unique
+  password   String
+  role       user_role @default(user)
+  created_at temporal.createdAtString()
+
+  posts    Post[]
+  comments Comment[]
+  likes    PostLike[]
+}
+
+// 板块：帖子按话题归类，管理员维护
+model Category {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  description String @default("")
+  sort        Int    @default(0)
+
+  posts Post[]
+}
+
+model Post {
+  id            Int           @id @default(autoincrement())
+  user_id       Int
+  user          User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  category_id   Int?
+  category      Category?     @relation(fields: [category_id], references: [id], onDelete: SetNull)
+  title         String
+  context       String
+  is_public     Boolean       @default(true)
+  review_status review_status @default(pending)
+  view_count    Int           @default(0)
+  like_count    Int           @default(0)
+  comment_count Int           @default(0)
+  create_at     temporal.createdAtString()
+  update_at     temporal.updatedAtString()
+
+  comments Comment[]
+  likes    PostLike[]
+
+  @@index([user_id])
+  @@index([category_id])
+  @@index([review_status, is_public])
+}
+
+// 评论：parent_id 为空是一级评论，否则是某条评论下的回复
+model Comment {
+  id        Int       @id @default(autoincrement())
+  post_id   Int
+  post      Post      @relation(fields: [post_id], references: [id], onDelete: Cascade)
+  user_id   Int
+  user      User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  parent_id Int?
+  parent    Comment?  @relation("CommentThread", fields: [parent_id], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentThread")
+  content   String
+  create_at temporal.createdAtString()
+
+  @@index([post_id])
+}
+
+// 点赞：联合主键保证一个用户对一篇帖子只能点赞一次
+model PostLike {
+  post_id Int
+  post    Post @relation(fields: [post_id], references: [id], onDelete: Cascade)
+  user_id Int
+  user    User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@id([post_id, user_id])
+}
